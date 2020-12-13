@@ -1,39 +1,16 @@
-/*$(document).ready(function(){
-    var moment = moment();
-
-    console.log(moment);
-    console.log(moment.date());
-    console.log(moment.hour());
-    console.log(moment.format());
-    
-    console.log(moment.format("MMMM DD"));
-    console.log(moment.format("H"));
-    console.log(moment.calendar());
-    var date = moment.format("dddd, MMMM DD");
-    
-    $("#currentDay").text(date);
-});*/
-
+// get moment object
 var moment = moment();
 
-//console.log(moment);
-//console.log(moment.date());
-//console.log(moment.hour());
-//console.log(moment.format());
-
-//console.log(moment.format("MMMM DD"));
-//console.log(moment.format("H"));
-//console.log(moment.calendar());
 var date = moment.format("dddd, MMMM DD");
 
+// put the date in the web browser
 $("#currentDay").text(date);
 
+//set the time Interval to check for each hour
 setInterval(checkTime, 500);
 
-//var
-
+// Get the text area to display the text
 var textareaValue = $("textarea");
-console.log(textareaValue);
 
 var storeVal = {
   nine: "",
@@ -47,11 +24,12 @@ var storeVal = {
   five: "",
 };
 
+// function to set the right colour for each task
 function checkTime() {
   var recent = parseInt(moment.format("H"));
-  //console.log(recent);
+
   var hour_list = $(".row");
-  ///console.log(hour_list);
+
   hour_list.each(function () {
     var $value = $(this);
     var $textarea = $value.find("textarea");
@@ -64,66 +42,49 @@ function checkTime() {
     } else if (recent < real) {
       $textarea.addClass("future");
     }
-    // var real = $.attr("id");
-    //console.log(real);
   });
 }
 
 var $buttons = $(".saveBtn");
-//console.log(textareaValue[1]);
-//var text = textareaValue[0].value;
-//console.log($buttons);
 
+// event listner to get the input in the text area and save it
 $buttons.on("click", function (e) {
   e.preventDefault();
 
   ids = this.id;
-  var text;
 
   if (ids === "nine") {
-    text = textareaValue[0].value;
-    storeVal[ids] = text;
-    console.log(storeVal[ids]);
+    storeVal[ids] = textareaValue[0].value;
   } else if (ids === "ten") {
-    text = textareaValue[1].value;
-    storeVal[ids] = text;
-    console.log(storeVal[ids]);
-    //console.log(text);
+    storeVal[ids] = textareaValue[1].value;
   } else if (ids === "eleven") {
-    text = textareaValue[2].value;
-    storeVal[ids] = text;
-    console.log(storeVal[ids]);
+    storeVal[ids] = textareaValue[2].value;
   } else if (ids === "twelve") {
-    text = textareaValue[3].value;
-    storeVal[ids] = text;
-    console.log(storeVal[ids]);
+    storeVal[ids] = textareaValue[3].value;
   } else if (ids === "one") {
-    text = textareaValue[4].value;
-    storeVal[ids] = text;
-    console.log(storeVal[ids]);
+    storeVal[ids] = textareaValue[4].value;
   } else if (ids === "two") {
-    text = textareaValue[5].value;
-    storeVal[ids] = text;
-    console.log(storeVal[ids]);
+    storeVal[ids] = textareaValue[5].value;
   } else if (ids === "three") {
-    text = textareaValue[6].value;
-    storeVal[ids] = text;
-    console.log(storeVal[ids]);
+    storeVal[ids] = textareaValue[6].value;
   } else if (ids === "four") {
-    text = textareaValue[7].value;
-    storeVal[ids] = text;
-    console.log(storeVal[ids]);
+    storeVal[ids] = textareaValue[7].value;
   } else if (ids === "five") {
-    text = textareaValue[8].value;
-    storeVal[ids] = text;
-    console.log(storeVal[ids]);
+    storeVal[ids] = textareaValue[8].value;
   }
 
   localStorage.setItem("storeVal", JSON.stringify(storeVal));
-  // var value =
 });
 
 var valStored = JSON.parse(localStorage.getItem("storeVal"));
-console.log(valStored);
 
-
+//get the text from the local storage and save it
+textareaValue[0].value = valStored.nine;
+textareaValue[1].value = valStored.ten;
+textareaValue[2].value = valStored.eleven;
+textareaValue[3].value = valStored.twelve;
+textareaValue[4].value = valStored.one;
+textareaValue[5].value = valStored.two;
+textareaValue[6].value = valStored.three;
+textareaValue[7].value = valStored.four;
+textareaValue[8].value = valStored.five;

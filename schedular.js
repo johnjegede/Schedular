@@ -28,10 +28,12 @@ var date = moment.format("dddd, MMMM DD");
 
 $("#currentDay").text(date);
 
-window.onload = setInterval(checkTime, 60000);
+setInterval(checkTime, 500);
 
 //var
 
+var textareaValue = $("textarea");
+console.log(textareaValue);
 
 
 function checkTime() {
@@ -57,3 +59,67 @@ function checkTime() {
     //console.log(real);
   });
 }
+
+  var $buttons = $(".saveBtn");
+  //console.log(textareaValue[1]);
+  //var text = textareaValue[0].value;
+      //console.log($buttons);
+
+  var storeVal = {"nine":"","ten":"","eleven":"","twelve":"","one":"","two":"","three":"","four":"","five":""};
+
+  $buttons.on("click",function(e){
+      e.preventDefault();
+
+      ids = this.id;
+      var text;
+
+      if(ids === "nine")
+      {
+        text = textareaValue[0].value;
+        storeVal[ids] = text;
+        console.log(storeVal[ids]);
+
+      }else if (ids === "ten")
+      {
+        text = textareaValue[1].value;
+        storeVal[ids] = text;
+        console.log(storeVal[ids]);
+        //console.log(text);
+      }else if (ids === "eleven"){
+        text = textareaValue[2].value;
+        storeVal[ids] = text;
+        console.log(storeVal[ids]);
+      }else if (ids === "twelve"){
+        text = textareaValue[3].value;
+        storeVal[ids] = text;
+        console.log(storeVal[ids]);
+      }else if (ids === "one"){
+        text = textareaValue[4].value;
+        storeVal[ids] = text;
+        console.log(storeVal[ids]);
+      }else if (ids === "two"){
+        text = textareaValue[5].value;
+        storeVal[ids] = text;
+        console.log(storeVal[ids]);
+      }else if (ids === "three"){
+        text = textareaValue[6].value;
+        storeVal[ids] = text;
+        console.log(storeVal[ids]);
+      }else if (ids === "four"){
+        text = textareaValue[7].value;
+        storeVal[ids] = text;
+        console.log(storeVal[ids]);
+      }else if (ids === "five"){
+        text = textareaValue[8].value;
+        storeVal[ids] = text;
+        console.log(storeVal[ids]);
+      }
+
+     
+
+   // var value = 
+    
+  });
+
+  localStorage.setItem("storeVal", JSON.stringify(storeVal));
+
